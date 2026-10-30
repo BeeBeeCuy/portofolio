@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects';
+import { PHOTO_DATA_URI, CAFE_DATA_URI, CV_DATA_URI } from '../data/assets';
+const title = 'Muhammad Irfan Habibi | Informatics Student & Developer';
+const description = 'Portofolio Muhammad Irfan Habibi — Mahasiswa Informatika Universitas Ahmad Dahlan, Web Developer & Project Manager.';
+const pintar = projects[0];
+const warung = projects[1];
+const cafe = projects[2];
+const inventaris = projects[3];
+---
+<BaseLayout title={title} description={description}>
+  <section class="hero" id="beranda">
+    <div>
+      <p class="tag">Portfolio / 2026</p>
+      <h1>Muhammad<br />Irfan <span class="forest">Habibi</span></h1>
+      <p class="hero-role">Informatics Student · Developer · Problem Solver</p>
+      <p class="hero-desc">Mahasiswa Informatika yang tertarik membangun aplikasi web dan mengeksplorasi solusi teknologi melalui proyek nyata.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#proyek">Lihat Proyek</a>
+        <a class="btn btn-ghost" href={CV_DATA_URI} download="CV-Muhammad-Irfan-Habibi.pdf">Download CV</a>
+        <a class="btn btn-ghost" href="https://github.com/BeeBeeCuy" target="_blank" rel="noopener">GitHub @BeeBeeCuy</a>
+      </div>
+      <p style="color:var(--color-muted);margin-top:1rem">Terbuka untuk magang / Kerja Praktik. IPK tidak ditampilkan di preview ini sampai perbedaan 3,81 (CV) dan 3,82 (situs lama) terverifikasi dengan transkrip.</p>
+    </div>
+    <figure class="hero-photo">
+      <img src={PHOTO_DATA_URI} alt="Foto formal Muhammad Irfan Habibi dengan latar hitam" />
+      <figcaption><strong>Muhammad Irfan Habibi</strong><br />Yogyakarta, Indonesia</figcaption>
+    </figure>
+  </section>
+
+  <section class="section" id="proyek">
+    <h2>Selected Work</h2>
+    <p class="lead">Empat proyek, tanpa proyek dummy. Panel abstrak adalah penanda proyek, bukan tangkapan layar aplikasi — kecuali visual Café Northern yang dipotong dari poster proyeknya dan diberi label jelas.</p>
+
+    <article class="dark">
+      <p class="tag">01 / Featured project · GEMASTIK XIX · 2026</p>
+      <h3>{pintar.title}</h3>
+      <p>{pintar.summary}</p>
+      <div class="project" style="border-top:0">
+        <div>
+          <p class="meta"><strong>Peran:</strong> {pintar.role}<br /><strong>Teknologi:</strong> {pintar.technologies.join(', ')}<br /><strong>Masalah:</strong> {pintar.problem}<br /><strong>Solusi:</strong> {pintar.solution}<br /><strong>Status:</strong> Entri kompetisi GEMASTIK XIX 2026</p>
+        </div>
+        <div class="visual"><div class="big">PintarAjar</div><p class="cap">Asisten AI untuk guru: modul ajar, soal evaluasi, dan strategi pembelajaran adaptif.</p><p class="visual-note">Visual proyek menyusul. Frame video MVP tidak dipakai karena isinya footage stok, bukan UI aplikasi.</p></div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <p class="tag">02 / Dalam Pengembangan · Proyek Fokus</p>
+        <h3>{warung.title}</h3>
+        <p>{warung.summary}</p>
+        <p class="meta"><strong>Peran:</strong> {warung.role}<br /><strong>Teknologi:</strong> {warung.technologies.join(', ')}<br /><strong>Masalah:</strong> {warung.problem}<br /><strong>Solusi:</strong> {warung.solution}<br /><strong>Status:</strong> Dalam pengembangan — repo publik BeeBeeCuy/warungkas, Tahap 6</p>
+        <div class="hero-cta"><a class="btn btn-ghost" href="https://github.com/BeeBeeCuy/warungkas" target="_blank" rel="noopener">Lihat Repo WarungKas</a></div>
+      </div>
+      <div class="visual"><div class="big">WarungKas</div><p class="cap">Kasir warung 24 jam: transaksi cepat, multi-satuan, shift penjaga, dan Buku Bon Digital.</p><p class="visual-note">Screenshot aplikasi menyusul.</p></div>
+    </article>
+
+    <article class="project">
+      <div>
+        <p class="tag">03 / Proyek Akademik · 2026</p>
+        <h3>{cafe.title}</h3>
+        <p>{cafe.summary}</p>
+        <p class="meta"><strong>Peran:</strong> {cafe.role}<br /><strong>Teknologi:</strong> Menunggu verifikasi pemilik — situs lama menulis PostgreSQL/Vercel, poster proyek menulis MySQL.<br /><strong>Masalah:</strong> {cafe.problem}<br /><strong>Solusi:</strong> {cafe.solution}<br /><strong>Status:</strong> Proyek akademik 2026</p>
+      </div>
+      <div class="visual"><img src={CAFE_DATA_URI} alt="Potongan poster proyek Café Northern yang memperlihatkan dashboard dan layar POS" /><p class="visual-note">Potongan dari poster proyek Café Northern: dashboard dan layar POS, bukan screenshot aplikasi utuh.</p></div>
+    </article>
+
+    <article class="project">
+      <div>
+        <p class="tag">04 / Proyek · 2022</p>
+        <h3>{inventaris.title}</h3>
+        <p>{inventaris.summary}</p>
+        <p class="meta"><strong>Peran:</strong> {inventaris.role}<br /><strong>Teknologi:</strong> {inventaris.technologies.join(', ')}<br /><strong>Masalah:</strong> {inventaris.problem}<br /><strong>Solusi:</strong> {inventaris.solution}<br /><strong>Kontribusi:</strong> Detail fitur masih menunggu verifikasi pemilik.<br /><strong>Status:</strong> Proyek 2022</p>
+      </div>
+      <div class="visual"><div class="big">Inventaris</div><p class="cap">Pencatatan dan pengelolaan inventaris barang kampus.</p><p class="visual-note">Screenshot aplikasi menyusul.</p></div>
+    </article>
+  </section>
+
+  <section class="section" id="tentang">
+    <h2>Tentang</h2>
+    <p>Saya mahasiswa S1 Informatika di <strong>Universitas Ahmad Dahlan</strong> (2023–sekarang) dengan latar belakang <strong>Teknik Komputer dan Jaringan</strong> dari SMK Negeri 1 Tuban. Saya memiliki pengalaman di bidang administrasi, pendampingan praktikum, pengembangan sistem informasi, dan manajemen proyek.</p>
+    <div class="panel" style="margin-top:1.5rem">
+      <h3>Pendidikan</h3>
+      <p><strong>Universitas Ahmad Dahlan — Yogyakarta</strong><br />S1 Informatika, 2023 – Sekarang</p>
+      <p style="margin-top:1rem"><strong>SMK Negeri 1 Tuban — Tuban</strong><br />Teknik Komputer dan Jaringan, 2020 – 2023</p>
+    </div>
+  </section>
+
+  <section class="section" id="keahlian">
+    <h2>Keahlian</h2>
+    <div class="skills">
+      <div><h3>Bahasa</h3><ul><li>C++</li><li>JavaScript</li><li>PHP</li><li>Python</li><li>HTML</li><li>CSS</li></ul></div>
+      <div><h3>Frontend / Backend</h3><ul><li>Laravel</li><li>Git</li><li>GitHub</li><li>VS Code</li><li>XAMPP</li></ul></div>
+      <div><h3>Database</h3><ul><li>MySQL</li><li>PostgreSQL</li><li>phpMyAdmin</li></ul></div>
+      <div><h3>Desain &amp; Dokumentasi</h3><ul><li>Figma</li><li>Canva</li><li>CorelDRAW</li><li>After Effects</li><li>CapCut</li><li>Notion</li><li>MS Office</li></ul></div>
+      <div><h3>Bidang</h3><ul><li>Sistem Informasi</li><li>Web Development</li><li>Software Testing</li></ul></div>
+      <div><h3>Non-Teknis</h3><ul><li>Analytical Thinking</li><li>Problem Solving</li><li>Leadership</li><li>Teamwork</li><li>Communication</li><li>Project Management</li></ul></div>
+    </div>
+    <p class="lead" style="margin-top:1rem">Daftar di atas adalah kelompok teknologi yang pernah digunakan, tanpa persentase kemampuan.</p>
+  </section>
+
+  <section class="section" id="pengalaman">
+    <h2>Pengalaman &amp; Organisasi</h2>
+    <div class="timeline">
+      <div class="t-item"><span class="year">2025–2026</span><div><h3>Asisten Praktikum — Program Studi Informatika, UAD</h3><p>Mendukung pelaksanaan praktikum dan bekerja sama dengan mahasiswa serta tim dalam kegiatan akademik.</p></div></div>
+      <div class="t-item"><span class="year">2025</span><div><h3>Kepala Departemen Etika dan Agama — Himpunan Mahasiswa Informatika, UAD</h3><p>Memimpin departemen etika dan agama pada himpunan mahasiswa program studi.</p></div></div>
+      <div class="t-item"><span class="year">2024</span><div><h3>Penanggung Jawab Program Kerja Musabaqah Ramadhan Informatika — UAD</h3><p>Bertanggung jawab atas pelaksanaan program kerja Musabaqah Ramadhan Informatika.</p></div></div>
+      <div class="t-item"><span class="year">2024</span><div><h3>Anggota R-Scuad Robotic Development Community — UAD</h3><p>Anggota komunitas pengembangan robotik kampus.</p></div></div>
+      <div class="t-item"><span class="year">2022</span><div><h3>Magang Administrasi Kampus — Universitas Sunan Bonang, Tuban</h3><p>Mendukung kegiatan administrasi di lingkungan universitas.</p></div></div>
+      <div class="t-item"><span class="year">2022</span><div><h3>Ketua Organisasi Rohani Islam — SMK Negeri 1 Tuban</h3><p>Memimpin organisasi kerohanian Islam sekolah.</p></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="prestasi">
+    <h2>Prestasi &amp; Pelatihan</h2>
+    <div class="proof">
+      <div class="panel"><h3>Prestasi</h3><ul><li>Juara Umum 1 — Lomba Gelar Kreasi Pemuda Koperasi tingkat Kabupaten Tuban (2022)</li><li>Juara 3 Best Poster — Gelar Karya Program Studi Informatika, UAD (2026)</li></ul></div>
+      <div class="panel"><h3>Pelatihan &amp; Seminar</h3><ul><li>Studium Generale Young Entrepreneurs Leadership — tingkat Nasional (2025)</li><li>Upgrading ORMAWA Fakultas Teknologi Industri (2024)</li><li>Upgrading Internal Himpunan Mahasiswa Informatika (2024)</li><li>Talkshow Orientasi Kemahasiswaan dan Alumni — UAD (2023)</li></ul></div>
+    </div>
+  </section>
+
+  <section class="section" id="kontak">
+    <p class="lead">Saya terbuka untuk kesempatan magang / Kerja Praktik dan kolaborasi proyek.</p>
+    <h2 class="contact-big">Mari bekerja sama.</h2>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:habibiirfan2nd@gmail.com">habibiirfan2nd@gmail.com</a>
+      <a class="btn btn-ghost" href="https://github.com/BeeBeeCuy" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/muhammad-irfan-habibi" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p style="color:var(--color-muted);margin-top:1.5rem">Yogyakarta, Indonesia — <span id="wibClock"></span></p>
+  </section>
+</BaseLayout>

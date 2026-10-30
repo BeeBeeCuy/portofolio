@@ -1,0 +1,49 @@
+---
+import '../styles/tokens.css';
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href="https://portofolio-eight-zeta-88.vercel.app/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231e3d33'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='36' font-weight='bold' fill='%23f4f2ec' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E" />
+<meta name="theme-color" content="#f4f2ec" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://portofolio-eight-zeta-88.vercel.app/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Muhammad Irfan Habibi","url":"https://portofolio-eight-zeta-88.vercel.app/","jobTitle":"Informatics Student","alumniOf":{"@type":"CollegeOrUniversity","name":"Universitas Ahmad Dahlan"},"address":{"@type":"PostalAddress","addressLocality":"Yogyakarta","addressCountry":"ID"},"sameAs":["https://github.com/BeeBeeCuy","https://www.linkedin.com/in/muhammad-irfan-habibi"]}
+</script>
+</head>
+<body>
+<header class="site">
+  <div class="nav" id="siteNav">
+    <a class="brand" href="#beranda">MIH.</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu">Menu</button>
+    <nav id="navMenu">
+      <a href="#proyek">Proyek</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#keahlian">Keahlian</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#prestasi">Prestasi</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <slot />
+</main>
+<footer>
+  <p>© <span id="year"></span> Muhammad Irfan Habibi — PRD V2.0 preview (Astro, preview sementara).</p>
+</footer>
+<script src="../scripts/navigation.ts"></script>
+</body>
+</html>
