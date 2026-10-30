@@ -28,3 +28,16 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(el=>revIo.observe(el));
 }
 const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
+
+// Menu mobile (UX-02): buka/tutup, tutup setelah memilih tautan
+const navToggle=document.getElementById('navToggle');
+const navEl=document.querySelector('.nav');
+if(navToggle&&navEl){
+  navToggle.addEventListener('click',()=>{
+    const open=navEl.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded',open?'true':'false');
+  });
+  navEl.querySelectorAll('a.menu').forEach(a=>a.addEventListener('click',()=>{
+    navEl.classList.remove('open'); navToggle.setAttribute('aria-expanded','false');
+  }));
+}
