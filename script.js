@@ -1,1 +1,8 @@
-Ly8gVGFodW4gb3RvbWF0aXMgZGkgZm9vdGVyCmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd5ZWFyJykudGV4dENvbnRlbnQgPSBuZXcgRGF0ZSgpLmdldEZ1bGxZZWFyKCk7CgovLyBNZW51IG1vYmlsZQpjb25zdCB0b2dnbGUgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbmF2VG9nZ2xlJyk7CmNvbnN0IG1lbnUgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbmF2TWVudScpOwp0b2dnbGUuYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCAoKSA9PiBtZW51LmNsYXNzTGlzdC50b2dnbGUoJ29wZW4nKSk7Cm1lbnUucXVlcnlTZWxlY3RvckFsbCgnYScpLmZvckVhY2goYSA9PiBhLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgKCkgPT4gbWVudS5jbGFzc0xpc3QucmVtb3ZlKCdvcGVuJykpKTsK
+// Tahun otomatis di footer
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Menu mobile
+const toggle = document.getElementById('navToggle');
+const menu = document.getElementById('navMenu');
+toggle.addEventListener('click', () => menu.classList.toggle('open'));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
