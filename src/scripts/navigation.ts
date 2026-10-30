@@ -37,3 +37,15 @@ if ('IntersectionObserver' in window) {
   }, { rootMargin: '-40% 0px -55% 0px' });
   Object.keys(map).forEach((id) => { const el = document.getElementById(id); if (el) io.observe(el); });
 }
+
+// Reveal saat scroll: hanya ditambahkan lewat JS, jadi tanpa JS konten tetap terlihat
+document.body.classList.add('js');
+if ('IntersectionObserver' in window) {
+  const revealIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); revealIo.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.section, .project, .panel, .t-item').forEach((el) => {
+    el.classList.add('reveal');
+    revealIo.observe(el);
+  });
+}
