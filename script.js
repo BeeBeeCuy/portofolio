@@ -127,3 +127,26 @@ if (prevBtn && nextBtn) {
   // Initialize Carousel
   renderCarousel();
 }
+// Typing judul About: ketik sekali saat bagian terlihat, kursor tetap berkedip.
+(function () {
+  const el = document.getElementById('aboutTitleText');
+  if (!el) return;
+  const full = el.textContent;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  let started = false;
+  const io = new IntersectionObserver((entries) => {
+    if (started) return;
+    const entry = entries[0];
+    if (!entry.isIntersecting) return;
+    started = true;
+    io.disconnect();
+    el.textContent = '';
+    let i = 0;
+    const timer = setInterval(() => {
+      i++;
+      el.textContent = full.slice(0, i);
+      if (i >= full.length) clearInterval(timer);
+    }, 70);
+  }, { threshold: 0.4 });
+  io.observe(el);
+})();
