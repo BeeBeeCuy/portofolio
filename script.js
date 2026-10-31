@@ -114,6 +114,18 @@ function renderCarousel() {
   if (dots) dots.textContent = `${idx + 1} / ${slides.length}`;
 }
 
+// Nama hero "jalan": masuk dari kiri saat load (CSS), lalu bergeser ke kiri
+// saat halaman di-scroll (parallax), kembali saat scroll ke atas.
+const heroName = document.querySelector('.hero-name');
+function updateNameShift() {
+  if (!heroName) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const shift = Math.max(-200, Math.min(0, -window.scrollY * 0.25));
+  heroName.style.left = `calc(50% + ${shift}px)`;
+}
+window.addEventListener('scroll', updateNameShift, { passive: true });
+updateNameShift();
+
 if (prevBtn && nextBtn) {
   prevBtn.addEventListener('click', () => { 
     idx = (idx - 1 + slides.length) % slides.length; 

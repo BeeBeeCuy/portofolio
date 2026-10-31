@@ -162,6 +162,14 @@ a { color: inherit; }
   margin: 0;
   user-select: none;
   z-index: 1;
+  animation: nameSlideIn 1.1s ease-out both;
+}
+@keyframes nameSlideIn {
+  from { opacity: 0; transform: translate(-70%, -50%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-name { animation: none; }
 }
 
 .hero-photo {
