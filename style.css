@@ -426,14 +426,15 @@ footer { padding: 32px 0 48px; color: var(--muted); text-align: center; }
 
 .awards-title { font-size: clamp(36px, 5vw, 64px); line-height: 1.05; margin: 0 0 12px; }
 .awards-layout { display: grid; grid-template-columns: 1.35fr 1fr; gap: 28px; align-items: start; max-width: 920px; margin: 32px auto 0; }
+.awards-collage-wrap { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .award-collage { display: flex; gap: 10px; align-items: flex-start; }
 .collage-col { display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .collage-col.middle { margin-top: 18px; }
 .collage-photo { width: 100%; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); display: block; }
 .collage-photo.portrait { aspect-ratio: 3 / 4; }
 .collage-photo.landscape { aspect-ratio: 4 / 3; }
-.collage-note { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
-.award-list { display: grid; gap: 12px; }
+.collage-note { font-size: 13px; color: var(--muted); margin: 0; }
+.award-list { display: grid; gap: 12px; align-content: start; min-width: 0; }
 .award-item { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; cursor: pointer; color: var(--ink); font-size: 15px; }
 .award-item-icon { font-size: 20px; }
 .award-item-name { flex: 1; font-weight: 600; }
