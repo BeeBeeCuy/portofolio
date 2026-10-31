@@ -175,11 +175,13 @@ a { color: inherit; }
   .hero-name span:nth-child(2) { display: none; }
 }
 .hero-photo {
-  height: 92%;
-  width: auto;
-  max-width: 96vw;
+  position: absolute;
+  left: 50%;
+  top: 16%;
+  transform: translateX(-50%);
+  width: 42vw;
+  height: auto;
   object-fit: contain;
-  position: relative;
   z-index: 2;
   filter: drop-shadow(0 24px 32px rgba(0,0,0,0.18));
 }
@@ -345,8 +347,8 @@ footer { padding: 32px 0 48px; color: var(--muted); text-align: center; }
   .js .reveal.in { opacity: 1; transform: none; }
   .hero-photo { animation: photoIn 0.9s ease both; }
   @keyframes photoIn {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: none; }
+    from { opacity: 0; transform: translateX(-50%) translateY(24px); }
+    to { opacity: 1; transform: translateX(-50%); }
   }
 }
 
@@ -358,7 +360,7 @@ footer { padding: 32px 0 48px; color: var(--muted); text-align: center; }
   .nav-toggle { display: grid; }
   
   .hero-name { font-size: 23vw; top: 42%; letter-spacing: 0.03em; -webkit-text-stroke: 1px var(--outline); }
-  .hero-photo { height: 82%; }
+  .hero-photo { width: 85vw; top: 18%; }
   
   .slide { width: 88%; }
   .car-btn { top: 120px; }
