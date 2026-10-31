@@ -372,3 +372,21 @@ footer { padding: 32px 0 48px; color: var(--muted); text-align: center; }
   
   .scroll-down { display: none; }
 }
+.cap-layout { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 18px; align-items: start; }
+.cap-intro h2 { font-size: clamp(36px, 4vw, 56px); margin: 0 0 12px; }
+.tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 24px; }
+.tech-icon { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 6px 10px; display: grid; place-items: center; gap: 6px; }
+.tech-icon img { width: 32px; height: 32px; object-fit: contain; }
+.tech-icon span { font-size: 11px; color: var(--muted); }
+.cap-card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.cap-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.cap-num { font-size: 36px; font-weight: 800; line-height: 1; }
+.cap-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; color: var(--muted); line-height: 1.4; }
+.cap-icon { width: 56px; height: 56px; border: 1px solid var(--line); border-radius: 12px; display: grid; place-items: center; font-size: 20px; font-weight: 700; margin: 20px 0 16px; background: var(--bg); }
+.cap-card p { color: var(--muted); line-height: 1.6; }
+.cap-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.cap-tags span { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 12px; }
+@media (max-width: 900px) {
+  .cap-layout { grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: repeat(4, 1fr); }
+}
