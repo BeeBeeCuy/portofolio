@@ -102,14 +102,8 @@ function renderCarousel() {
   // Set Active Styles
   slides.forEach((s, i) => s.classList.toggle('active', i === idx));
   
-  // Dynamic offset calculation for smooth centering
-  const slideWidth = slides[0].getBoundingClientRect().width;
-  const gap = 18; 
-  const trackWrapperWidth = track.parentElement.clientWidth;
-  const centerOffset = (trackWrapperWidth - slideWidth) / 2;
-  const moveAmount = (slideWidth + gap) * idx;
-  
-  track.style.transform = `translateX(${centerOffset - moveAmount}px)`;
+  // Satu slide penuh per langkah: tidak ada hitungan tengah yang bisa meleset
+  track.style.transform = `translateX(-${idx * 100}%)`;
   
   // Update Information
   const s = slides[idx];
