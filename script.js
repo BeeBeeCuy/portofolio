@@ -127,26 +127,40 @@ if (prevBtn && nextBtn) {
   // Initialize Carousel
   renderCarousel();
 }
-// Typing judul About: ketik sekali saat bagian terlihat, kursor tetap berkedip.
+
+// Typing judul (About & Awards): ketik sekali saat terlihat, kursor tetap berkedip.
 (function () {
-  const el = document.getElementById('aboutTitleText');
-  if (!el) return;
-  const full = el.textContent;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-  let started = false;
-  const io = new IntersectionObserver((entries) => {
-    if (started) return;
-    const entry = entries[0];
-    if (!entry.isIntersecting) return;
-    started = true;
-    io.disconnect();
-    el.textContent = '';
-    let i = 0;
-    const timer = setInterval(() => {
-      i++;
-      el.textContent = full.slice(0, i);
-      if (i >= full.length) clearInterval(timer);
-    }, 70);
-  }, { threshold: 0.4 });
-  io.observe(el);
+  ['aboutTitleText', 'awardsTitleText'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const full = el.textContent;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    let started = false;
+    const io = new IntersectionObserver((entries) => {
+      if (started || !entries[0].isIntersecting) return;
+      started = true;
+      io.disconnect();
+      el.textContent = '';
+      let i = 0;
+      const timer = setInterval(() => {
+        i++;
+        el.textContent = full.slice(0, i);
+        if (i >= full.length) clearInterval(timer);
+      }, 70);
+    }, { threshold: 0.4 });
+    io.observe(el);
+  });
 })();
+// Accordion penghargaan: satu detail terbuka dalam satu waktu.
+document.querySelectorAll('.award-item').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const detail = document.getElementById(btn.getAttribute('aria-controls'));
+    const willOpen = btn.getAttribute('aria-expanded') !== 'true';
+    document.querySelectorAll('.award-item').forEach((b) => b.setAttribute('aria-expanded', 'false'));
+    document.querySelectorAll('.award-detail').forEach((d) => { d.hidden = true; });
+    if (willOpen && detail) {
+      btn.setAttribute('aria-expanded', 'true');
+      detail.hidden = false;
+    }
+  });
+});
