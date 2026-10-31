@@ -97,22 +97,21 @@ const nextBtn = document.getElementById('nextBtn');
 let idx = 0;
 
 function renderCarousel() {
-  if (!slides.length || !info || !track) return;
-  
-  // Set Active Styles
-  slides.forEach((s, i) => s.classList.toggle('active', i === idx));
-  
-  // Satu slide penuh per langkah: tidak ada hitungan tengah yang bisa meleset
-  track.style.transform = `translateX(-${idx * 100}%)`;
-  
-  // Update Information
+  if (!slides.length || !info) return;
+  const n = slides.length;
+  slides.forEach((s, i) => {
+    s.classList.toggle('active', i === idx);
+    s.classList.toggle('prev', i === (idx - 1 + n) % n);
+    s.classList.toggle('next', i === (idx + 1) % n);
+    s.classList.toggle('hidden', i !== idx && i !== (idx - 1 + n) % n && i !== (idx + 1) % n);
+  });
   const s = slides[idx];
   const tagsHtml = s.dataset.tags.split('|').map(t => `<span>${t}</span>`).join('');
-  info.innerHTML = `<h3>${s.dataset.title}</h3><p>${s.dataset.desc}</p><div class="tags">${tagsHtml}</div>`;
-  
-  if (dots) {
-    dots.textContent = `${idx + 1} / ${slides.length}`;
-  }
+  const viewLink = s.dataset.repo
+    ? `<p style="margin-top:16px"><a href="${s.dataset.repo}" target="_blank" rel="noopener noreferrer">View Project →</a></p>`
+    : `<p style="margin-top:16px"><a href="#daftar-proyek">View Project →</a></p>`;
+  info.innerHTML = `<h3>${s.dataset.title}</h3><p>${s.dataset.desc}</p><div class="tags">${tagsHtml}</div>${viewLink}`;
+  if (dots) dots.textContent = `${idx + 1} / ${slides.length}`;
 }
 
 if (prevBtn && nextBtn) {
@@ -124,9 +123,6 @@ if (prevBtn && nextBtn) {
     idx = (idx + 1) % slides.length; 
     renderCarousel(); 
   });
-  
-  // Recalculate centering offset on window resize
-  window.addEventListener('resize', renderCarousel);
   
   // Initialize Carousel
   renderCarousel();
